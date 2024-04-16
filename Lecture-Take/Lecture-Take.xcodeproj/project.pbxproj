@@ -18,6 +18,8 @@
 		46446C462BC9791A0021A84A /* Lecture_TakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C452BC9791A0021A84A /* Lecture_TakeTests.swift */; };
 		46446C502BC9791B0021A84A /* Lecture_TakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C4F2BC9791B0021A84A /* Lecture_TakeUITests.swift */; };
 		46446C522BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C512BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift */; };
+		46F633BB2BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F633B92BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift */; };
+		46F633BC2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F633BA2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		46446C4B2BC9791B0021A84A /* Lecture-TakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lecture-TakeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46446C4F2BC9791B0021A84A /* Lecture_TakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture_TakeUITests.swift; sourceTree = "<group>"; };
 		46446C512BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture_TakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		46F633B92BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureNotes+CoreDataClass.swift"; sourceTree = "<group>"; };
+		46F633BA2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureNotes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		46446C2A2BC979160021A84A /* Lecture-Take */ = {
 			isa = PBXGroup;
 			children = (
+				46F633B42BCE4D9500C3EBF9 /* lectureNote */,
 				46446C2B2BC979160021A84A /* AppDelegate.swift */,
 				46446C2D2BC979160021A84A /* SceneDelegate.swift */,
 				46446C2F2BC979160021A84A /* ViewController.swift */,
@@ -131,6 +136,15 @@
 				46446C512BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift */,
 			);
 			path = "Lecture-TakeUITests";
+			sourceTree = "<group>";
+		};
+		46F633B42BCE4D9500C3EBF9 /* lectureNote */ = {
+			isa = PBXGroup;
+			children = (
+				46F633B92BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift */,
+				46F633BA2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift */,
+			);
+			path = lectureNote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F633BB2BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift in Sources */,
+				46F633BC2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift in Sources */,
 				46446C302BC979160021A84A /* ViewController.swift in Sources */,
 				46446C362BC979160021A84A /* Lecture_Take.xcdatamodeld in Sources */,
 				46446C2C2BC979160021A84A /* AppDelegate.swift in Sources */,

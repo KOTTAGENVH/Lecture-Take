@@ -16,11 +16,11 @@ extension NoteModel {
         return NSFetchRequest<NoteModel>(entityName: "NoteModel")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var descriptionNote: String?
-    @NSManaged public var image: Data?
     @NSManaged public var date: Date?
+    @NSManaged public var descriptionNote: String?
     @NSManaged public var id: Int32
+    @NSManaged public var image: Data?
+    @NSManaged public var title: String?
 
 }
 

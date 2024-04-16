@@ -36,7 +36,6 @@ class ViewController: UIViewController {
 
     
     @IBAction func didTapAdd() {
-        print("Button Clicked")
         let vc = storyboard?.instantiateViewController(identifier: "addTask") as! AddTaskViewController
         vc.title = "New Note"
         navigationController?.pushViewController(vc, animated: true)

@@ -129,7 +129,7 @@
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYh-hM-lZb">
-                                <rect key="frame" x="76" y="462" width="79" height="37"/>
+                                <rect key="frame" x="76" y="462" width="24" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="FNU-EY-vPg"/>
                                     <constraint firstAttribute="width" constant="79" id="Uup-5c-WxR"/>
@@ -149,7 +149,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYy-8X-QSH">
-                                <rect key="frame" x="221" y="462" width="50" height="37"/>
+                                <rect key="frame" x="166" y="462" width="105" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="A2h-7S-fc9"/>
                                     <constraint firstAttribute="width" constant="105" id="aMu-vl-fmp"/>
@@ -171,6 +171,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="Zss-JP-dSj" eventType="touchUpInside" id="0XS-Ao-Joi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqj-xa-Znc">
                                 <rect key="frame" x="149" y="170" width="99" height="20.333333333333343"/>
