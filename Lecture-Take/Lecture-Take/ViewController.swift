@@ -17,6 +17,18 @@ class ViewController: UIViewController {
         
         // Set the dataSource of the tableView to self
         tableView.dataSource = self
+        
+        // Set up constraints to make the tableView fill the width of its container
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(tableView)
+            
+            // Constrain tableView to fill the width of its superview
+            NSLayoutConstraint.activate([
+                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                tableView.topAnchor.constraint(equalTo: searchbar.bottomAnchor),
+                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
 
     }
     
