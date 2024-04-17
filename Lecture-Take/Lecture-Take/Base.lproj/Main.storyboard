@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,23 +18,33 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="Ra0-MO-LN9">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="q2h-X0-V0R" id="5OO-dX-Lmi"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCellID" textLabel="x4C-RQ-Odp" detailTextLabel="lal-Qn-IgN" style="IBUITableViewCellStyleSubtitle" id="xNV-9H-IhV" customClass="NoteTableCelll" customModule="Lecture_Take" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCellID" textLabel="Nlx-Zq-zgP" detailTextLabel="ZQJ-Sx-gnf" rowHeight="48" style="IBUITableViewCellStyleValue1" id="xNV-9H-IhV" customClass="NoteTableCelll" customModule="Lecture_Take" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="393" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xNV-9H-IhV" id="b5d-aK-SbK">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x4C-RQ-Odp">
-                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nlx-Zq-zgP">
+                                            <rect key="frame" x="20" y="17" width="25" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lal-Qn-IgN">
-                                            <rect key="frame" x="20" y="22.333333333333336" width="26.666666666666668" height="14.333333333333334"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZQJ-Sx-gnf">
+                                            <rect key="frame" x="346.33333333333331" y="17" width="26.666666666666668" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -45,8 +54,8 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="dateLabel" destination="lal-Qn-IgN" id="Hbz-P2-OXU"/>
-                                    <outlet property="titleLabel" destination="x4C-RQ-Odp" id="xHV-rR-Qsn"/>
+                                    <outlet property="dateLabel" destination="ZQJ-Sx-gnf" id="wsq-Py-cBG"/>
+                                    <outlet property="titleLabel" destination="Nlx-Zq-zgP" id="PYZ-UU-cqM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -56,30 +65,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="aKl-Hf-wOb">
-                        <barButtonItem key="rightBarButtonItem" largeContentSizeImage="note" catalog="system" id="pwT-97-lLU">
-                            <imageReference key="image" image="note.text.badge.plus" catalog="system" symbolScale="large"/>
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="JYm-S6-jdY">
-                                <rect key="frame" x="290" y="3.6666666666666679" width="87" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Add"/>
-                                <connections>
-                                    <action selector="didTapAdd" destination="q2h-X0-V0R" eventType="touchDown" id="o5U-F3-0cd"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" largeContentSizeImage="note" catalog="system" systemItem="add" id="pwT-97-lLU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didTapAdd" destination="q2h-X0-V0R" id="108-rT-SW9"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="Ra0-MO-LN9" id="fHU-FY-jdt"/>
                         <segue destination="Zss-JP-dSj" kind="show" identifier="newNote" id="Fqk-vH-tnh"/>
                         <segue destination="Zss-JP-dSj" kind="show" identifier="editNote" id="LZC-y3-at8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Yb-zo-2Xj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3905" y="-88"/>
+            <point key="canvasLocation" x="3904.5801526717555" y="-88.028169014084511"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gQx-hz-213">
@@ -152,15 +153,8 @@
                                     <action selector="cameraButtonClicked:" destination="Zss-JP-dSj" eventType="touchDown" id="Q5s-Ai-Xh9"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="blY-ez-2Nl">
-                                <rect key="frame" x="73" y="568" width="251" height="136"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="136" id="mOJ-tR-Eb7"/>
-                                    <constraint firstAttribute="width" constant="251" id="vIY-vv-FQc"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYy-8X-QSH">
-                                <rect key="frame" x="221" y="506" width="50" height="37"/>
+                                <rect key="frame" x="166" y="506" width="105" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="A2h-7S-fc9"/>
                                     <constraint firstAttribute="width" constant="105" id="aMu-vl-fmp"/>
@@ -197,6 +191,13 @@
                                     <action selector="DeleteNote:" destination="Zss-JP-dSj" eventType="touchDown" id="CLZ-as-TWd"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blY-ez-2Nl">
+                                <rect key="frame" x="73" y="567" width="251" height="136"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="136" id="mOJ-tR-Eb7"/>
+                                    <constraint firstAttribute="width" constant="251" id="vIY-vv-FQc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A9a-hG-7GX"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -239,21 +240,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nZm-RA-U30">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="uIY-Cg-5T1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9iG-Uu-mQE">
-                                <rect key="frame" x="299" y="3.6666666666666679" width="78" height="37"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="fto-O0-PsH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6xP-h7-XrP">
+                                <rect key="frame" x="290" y="3.6666666666666679" width="87" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="IEu-mO-IR2"/>
-                                    <constraint firstAttribute="width" constant="245" id="ZDe-6F-V0y"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Save"/>
-                                <connections>
-                                    <action selector="saveAction:" destination="Zss-JP-dSj" eventType="touchDown" id="wN5-Ui-80v"/>
-                                </connections>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
                             </button>
+                            <connections>
+                                <action selector="saveAction:" destination="Zss-JP-dSj" id="VkZ-IH-5s3"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -303,7 +299,6 @@
     <resources>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="note" catalog="system" width="128" height="107"/>
-        <image name="note.text.badge.plus" catalog="system" width="128" height="109"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
