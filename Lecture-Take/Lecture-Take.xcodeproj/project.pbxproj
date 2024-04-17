@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4624B87F2BCFD3EB0095CCE6 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624B87E2BCFD3EB0095CCE6 /* Note.swift */; };
+		4624B8812BCFD4E10095CCE6 /* NoteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624B8802BCFD4E10095CCE6 /* NoteTableView.swift */; };
+		4624B8832BCFD5AC0095CCE6 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624B8822BCFD5AC0095CCE6 /* NoteDetailViewController.swift */; };
 		46255ED62BCD06C900CDCA1A /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46255ED52BCD06C900CDCA1A /* AddTaskViewController.swift */; };
 		46446C2C2BC979160021A84A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C2B2BC979160021A84A /* AppDelegate.swift */; };
 		46446C2E2BC979160021A84A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C2D2BC979160021A84A /* SceneDelegate.swift */; };
@@ -18,8 +21,7 @@
 		46446C462BC9791A0021A84A /* Lecture_TakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C452BC9791A0021A84A /* Lecture_TakeTests.swift */; };
 		46446C502BC9791B0021A84A /* Lecture_TakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C4F2BC9791B0021A84A /* Lecture_TakeUITests.swift */; };
 		46446C522BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C512BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift */; };
-		46F633BB2BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F633B92BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift */; };
-		46F633BC2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F633BA2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift */; };
+		46F633C72BCF090B00C3EBF9 /* NoteTableCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F633C62BCF090B00C3EBF9 /* NoteTableCelll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4624B87E2BCFD3EB0095CCE6 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		4624B8802BCFD4E10095CCE6 /* NoteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableView.swift; sourceTree = "<group>"; };
+		4624B8822BCFD5AC0095CCE6 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		46255ED52BCD06C900CDCA1A /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		46446C282BC979160021A84A /* Lecture-Take.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecture-Take.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46446C2B2BC979160021A84A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,8 +60,7 @@
 		46446C4B2BC9791B0021A84A /* Lecture-TakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lecture-TakeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46446C4F2BC9791B0021A84A /* Lecture_TakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture_TakeUITests.swift; sourceTree = "<group>"; };
 		46446C512BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture_TakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		46F633B92BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureNotes+CoreDataClass.swift"; sourceTree = "<group>"; };
-		46F633BA2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LectureNotes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		46F633C62BCF090B00C3EBF9 /* NoteTableCelll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableCelll.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,16 +111,19 @@
 		46446C2A2BC979160021A84A /* Lecture-Take */ = {
 			isa = PBXGroup;
 			children = (
-				46F633B42BCE4D9500C3EBF9 /* lectureNote */,
+				46F633C62BCF090B00C3EBF9 /* NoteTableCelll.swift */,
 				46446C2B2BC979160021A84A /* AppDelegate.swift */,
 				46446C2D2BC979160021A84A /* SceneDelegate.swift */,
 				46446C2F2BC979160021A84A /* ViewController.swift */,
+				4624B8822BCFD5AC0095CCE6 /* NoteDetailViewController.swift */,
 				46255ED52BCD06C900CDCA1A /* AddTaskViewController.swift */,
 				46446C312BC979160021A84A /* Main.storyboard */,
 				46446C372BC979190021A84A /* Assets.xcassets */,
 				46446C392BC979190021A84A /* LaunchScreen.storyboard */,
 				46446C3C2BC979190021A84A /* Info.plist */,
 				46446C342BC979160021A84A /* Lecture_Take.xcdatamodeld */,
+				4624B87E2BCFD3EB0095CCE6 /* Note.swift */,
+				4624B8802BCFD4E10095CCE6 /* NoteTableView.swift */,
 			);
 			path = "Lecture-Take";
 			sourceTree = "<group>";
@@ -136,15 +143,6 @@
 				46446C512BC9791B0021A84A /* Lecture_TakeUITestsLaunchTests.swift */,
 			);
 			path = "Lecture-TakeUITests";
-			sourceTree = "<group>";
-		};
-		46F633B42BCE4D9500C3EBF9 /* lectureNote */ = {
-			isa = PBXGroup;
-			children = (
-				46F633B92BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift */,
-				46F633BA2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift */,
-			);
-			path = lectureNote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,13 +276,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46F633BB2BCE729100C3EBF9 /* LectureNotes+CoreDataClass.swift in Sources */,
-				46F633BC2BCE729100C3EBF9 /* LectureNotes+CoreDataProperties.swift in Sources */,
 				46446C302BC979160021A84A /* ViewController.swift in Sources */,
+				4624B8812BCFD4E10095CCE6 /* NoteTableView.swift in Sources */,
+				4624B8832BCFD5AC0095CCE6 /* NoteDetailViewController.swift in Sources */,
 				46446C362BC979160021A84A /* Lecture_Take.xcdatamodeld in Sources */,
 				46446C2C2BC979160021A84A /* AppDelegate.swift in Sources */,
+				4624B87F2BCFD3EB0095CCE6 /* Note.swift in Sources */,
 				46446C2E2BC979160021A84A /* SceneDelegate.swift in Sources */,
 				46255ED62BCD06C900CDCA1A /* AddTaskViewController.swift in Sources */,
+				46F633C72BCF090B00C3EBF9 /* NoteTableCelll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

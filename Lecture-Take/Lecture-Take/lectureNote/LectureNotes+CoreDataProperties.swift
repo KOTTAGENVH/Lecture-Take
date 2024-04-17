@@ -13,7 +13,7 @@ import CoreData
 extension LectureNotes {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<LectureNotes> {
-        return NSFetchRequest<LectureNotes>(entityName: "LectureNote")
+        return NSFetchRequest<LectureNotes>(entityName: "LectureNotes")
     }
 
     @NSManaged public var date: Date?
@@ -21,6 +21,7 @@ extension LectureNotes {
     @NSManaged public var id: Int32
     @NSManaged public var title: String?
     @NSManaged public var image: Data?
+    @NSManaged public var deletedDate: Date?
 
 }
 
