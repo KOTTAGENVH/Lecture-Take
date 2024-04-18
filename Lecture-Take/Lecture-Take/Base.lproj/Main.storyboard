@@ -267,7 +267,7 @@
             </objects>
             <point key="canvasLocation" x="4858.7786259541981" y="-88.028169014084511"/>
         </scene>
-        <!--Title-->
+        <!--View Controller-->
         <scene sceneID="HEl-vP-Tx7">
             <objects>
                 <viewController id="4V1-tX-ks9" sceneMemberID="viewController">
@@ -286,7 +286,6 @@
                         <viewLayoutGuide key="safeArea" id="XIu-da-JwD"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Nec-hT-Uz5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ze-Bz-d7P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

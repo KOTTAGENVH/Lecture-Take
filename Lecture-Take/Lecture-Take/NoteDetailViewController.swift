@@ -29,7 +29,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     private var selectedImage: UIImage?
     private var imagePickerController: UIImagePickerController?
     
-    
+    var uploadedimage: Data?
     var selectedNote: Note? = nil
     
     override func viewDidLoad()
@@ -49,10 +49,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         {
             titlefield.text = selectedNote?.title
             descriptionfield.text = selectedNote?.desc
-            //            if let imageData = selectedNote?.image {
-            //                imageviewer.image = UIImage(data: (imageData))!
-            //            }
-            
+            imageviewer.image = UIImage(data: selectedNote?.imageData ?? Data())
             deletebutton.isEnabled = true
             
         }
@@ -157,10 +154,8 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
             newNote.id = noteList.count as NSNumber
             newNote.title = titlefield.text
             newNote.desc = descriptionfield.text
+            newNote.imageData = uploadedimage
             newNote.date = Date()
-            //            if let pickedImage = imageviewer.image {
-            //                newNote.image = pickedImage.pngData()
-            //            }
             
             
             do {
@@ -179,9 +174,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
                     if note == selectedNote {
                         note.title = titlefield.text
                         note.desc = descriptionfield.text
-                        //                        if let pickedImage = imageviewer.image {
-                        //                            note.image = pickedImage.pngData()
-                        //                        }
+                        note.imageData = uploadedimage
                         try context.save()
                         navigationController?.popViewController(animated: true)
                     }
@@ -201,7 +194,10 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
-            imageviewer.image = pickedImage
+            if let imageData = pickedImage.jpegData(compressionQuality: 1.0) {
+                       uploadedimage = imageData
+                       imageviewer.image = pickedImage
+                   }
         }
         dismiss(animated: true, completion: nil)
     }

@@ -17,6 +17,6 @@ class Note: NSManagedObject
     @NSManaged var desc: String!
     @NSManaged var deletedDate: Date?
     @NSManaged var date: Date?
-//    @NSManaged var image: Data?
+    @NSManaged var imageData: Data?
 }
 
