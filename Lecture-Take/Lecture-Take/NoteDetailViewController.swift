@@ -208,31 +208,50 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
 
     
  
+ //To update the deletedate and leave the core data in core data
+//    @IBAction func DeleteNote(_ sender: Any)
+//    {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//        
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+//        do {
+//            let results:NSArray = try context.fetch(request) as NSArray
+//            for result in results
+//            {
+//                let note = result as! Note
+//                if(note == selectedNote)
+//                {
+//                    note.deletedDate = Date()
+//                    try context.save()
+//                    navigationController?.popViewController(animated: true)
+//                }
+//            }
+//        }
+//        catch
+//        {
+//            print("Fetch Failed")
+//        }
+//    }
     
-    @IBAction func DeleteNote(_ sender: Any)
-    {
+    //To delete the note entirely from core data
+    
+    @IBAction func DeleteNote(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let context = appDelegate.persistentContainer.viewContext
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-        do {
-            let results:NSArray = try context.fetch(request) as NSArray
-            for result in results
-            {
-                let note = result as! Note
-                if(note == selectedNote)
-                {
-                    note.deletedDate = Date()
-                    try context.save()
-                    navigationController?.popViewController(animated: true)
-                }
+        if let noteToDelete = selectedNote {
+            context.delete(noteToDelete)
+            
+            do {
+                try context.save()
+                navigationController?.popViewController(animated: true)
+            } catch {
+                print("Failed to delete note: \(error)")
             }
         }
-        catch
-        {
-            print("Fetch Failed")
-        }
     }
+
     
 }
 
