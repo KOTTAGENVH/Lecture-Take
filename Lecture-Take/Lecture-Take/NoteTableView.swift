@@ -176,6 +176,13 @@ class NoteTableView: UITableViewController, UISearchBarDelegate {
          return noDeleteNoteList
      }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+        tableView.reloadData()
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -197,14 +204,14 @@ class NoteTableView: UITableViewController, UISearchBarDelegate {
                 print("Fetch Failed")
             }
         }
-        filteredNotes = noteList // Initially, set filteredNotes to all notes
+        filteredNotes = nonDeletedNotes() // Initially, set filteredNotes to all notes not deleted
     }
 
     func filterNotes(with searchText: String) {
          let dateFormatter = DateFormatter() // Define the DateFormatter outside the closure
          
          if searchText.isEmpty {
-             filteredNotes = noteList // If search text is empty, show all notes
+             filteredNotes = nonDeletedNotes() // If search text is empty, show all notes not deleted
          } else {
              filteredNotes = nonDeletedNotes().filter { note in
                  let dateString = dateFormatter.string(from: note.date!) // Force unwrap note.date
