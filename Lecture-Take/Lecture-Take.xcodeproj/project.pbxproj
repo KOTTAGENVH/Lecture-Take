@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460AD0D32BD1C09900C041D8 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460AD0D22BD1C09900C041D8 /* NewsTableViewController.swift */; };
 		4624B87F2BCFD3EB0095CCE6 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624B87E2BCFD3EB0095CCE6 /* Note.swift */; };
 		4624B8812BCFD4E10095CCE6 /* NoteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624B8802BCFD4E10095CCE6 /* NoteTableView.swift */; };
 		4624B8832BCFD5AC0095CCE6 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624B8822BCFD5AC0095CCE6 /* NoteDetailViewController.swift */; };
-		46255ED62BCD06C900CDCA1A /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46255ED52BCD06C900CDCA1A /* AddTaskViewController.swift */; };
 		46446C2C2BC979160021A84A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C2B2BC979160021A84A /* AppDelegate.swift */; };
 		46446C2E2BC979160021A84A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C2D2BC979160021A84A /* SceneDelegate.swift */; };
-		46446C302BC979160021A84A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46446C2F2BC979160021A84A /* ViewController.swift */; };
 		46446C332BC979160021A84A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 46446C322BC979160021A84A /* Base */; };
 		46446C362BC979160021A84A /* Lecture_Take.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46446C342BC979160021A84A /* Lecture_Take.xcdatamodeld */; };
 		46446C382BC979190021A84A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46446C372BC979190021A84A /* Assets.xcassets */; };
@@ -42,14 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		460AD0D22BD1C09900C041D8 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		4624B87E2BCFD3EB0095CCE6 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		4624B8802BCFD4E10095CCE6 /* NoteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableView.swift; sourceTree = "<group>"; };
 		4624B8822BCFD5AC0095CCE6 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
-		46255ED52BCD06C900CDCA1A /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		46446C282BC979160021A84A /* Lecture-Take.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lecture-Take.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46446C2B2BC979160021A84A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46446C2D2BC979160021A84A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		46446C2F2BC979160021A84A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		46446C322BC979160021A84A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46446C352BC979160021A84A /* Lecture_Take.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lecture_Take.xcdatamodel; sourceTree = "<group>"; };
 		46446C372BC979190021A84A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		460AD0D12BD1BFE900C041D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46446C342BC979160021A84A /* Lecture_Take.xcdatamodeld */,
+				4624B87E2BCFD3EB0095CCE6 /* Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		46446C1F2BC979160021A84A = {
 			isa = PBXGroup;
 			children = (
@@ -114,15 +121,13 @@
 				46F633C62BCF090B00C3EBF9 /* NoteTableCelll.swift */,
 				46446C2B2BC979160021A84A /* AppDelegate.swift */,
 				46446C2D2BC979160021A84A /* SceneDelegate.swift */,
-				46446C2F2BC979160021A84A /* ViewController.swift */,
 				4624B8822BCFD5AC0095CCE6 /* NoteDetailViewController.swift */,
-				46255ED52BCD06C900CDCA1A /* AddTaskViewController.swift */,
 				46446C312BC979160021A84A /* Main.storyboard */,
+				460AD0D22BD1C09900C041D8 /* NewsTableViewController.swift */,
 				46446C372BC979190021A84A /* Assets.xcassets */,
 				46446C392BC979190021A84A /* LaunchScreen.storyboard */,
 				46446C3C2BC979190021A84A /* Info.plist */,
-				46446C342BC979160021A84A /* Lecture_Take.xcdatamodeld */,
-				4624B87E2BCFD3EB0095CCE6 /* Note.swift */,
+				460AD0D12BD1BFE900C041D8 /* Model */,
 				4624B8802BCFD4E10095CCE6 /* NoteTableView.swift */,
 			);
 			path = "Lecture-Take";
@@ -276,14 +281,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46446C302BC979160021A84A /* ViewController.swift in Sources */,
 				4624B8812BCFD4E10095CCE6 /* NoteTableView.swift in Sources */,
 				4624B8832BCFD5AC0095CCE6 /* NoteDetailViewController.swift in Sources */,
 				46446C362BC979160021A84A /* Lecture_Take.xcdatamodeld in Sources */,
 				46446C2C2BC979160021A84A /* AppDelegate.swift in Sources */,
+				460AD0D32BD1C09900C041D8 /* NewsTableViewController.swift in Sources */,
 				4624B87F2BCFD3EB0095CCE6 /* Note.swift in Sources */,
 				46446C2E2BC979160021A84A /* SceneDelegate.swift in Sources */,
-				46255ED62BCD06C900CDCA1A /* AddTaskViewController.swift in Sources */,
 				46F633C72BCF090B00C3EBF9 /* NoteTableCelll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

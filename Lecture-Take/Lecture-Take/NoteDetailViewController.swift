@@ -53,8 +53,43 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
             deletebutton.isEnabled = true
             
         }
+        
+        // Add tap gesture recognizer to imageviewer
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewerTapped))
+                imageviewer.addGestureRecognizer(tapGesture)
+                imageviewer.isUserInteractionEnabled = true
     }
     
+    @objc func imageViewerTapped() {
+        // Check if there's an image in imageviewer
+        if let image = imageviewer.image {
+            // Create a UIAlertController
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            
+            // Create a UIImageView and set its image
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            
+            // Add the UIImageView to the UIAlertController
+            alertController.view.addSubview(imageView)
+            
+            // Add constraints to the UIImageView to make it fit inside the alert controller
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                imageView.topAnchor.constraint(equalTo: alertController.view.topAnchor, constant: 16),
+                imageView.leadingAnchor.constraint(equalTo: alertController.view.leadingAnchor, constant: 16),
+                imageView.trailingAnchor.constraint(equalTo: alertController.view.trailingAnchor, constant: -16),
+                imageView.bottomAnchor.constraint(equalTo: alertController.view.bottomAnchor, constant: -16)
+            ])
+            
+            // Add an action to dismiss the alert controller
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            
+            // Present the UIAlertController
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+
     // Function to start or stop voice recording
     @IBAction func transcribeButtonClicked(_ sender: UIButton) {
         if audioEngine.isRunning {
