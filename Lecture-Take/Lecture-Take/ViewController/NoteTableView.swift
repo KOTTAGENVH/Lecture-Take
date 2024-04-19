@@ -221,11 +221,17 @@ class NoteTableView: UITableViewController, UISearchBarDelegate {
          }
          tableView.reloadData()
      }
-    // MARK: - IBActions
-
+  
+//Function to navigate to add screen
     @IBAction func didTapAdd() {
         let vc = storyboard?.instantiateViewController(identifier: "addTask") as! NoteDetailViewController
         vc.title = "New Note"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func didTapNews() {
+        let vc = storyboard?.instantiateViewController(identifier: "newsview") as! NewsTableViewController
+        vc.title = "NewsLK"
         navigationController?.pushViewController(vc, animated: true)
     }
 

@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Speech
+import PDFKit
 
 class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SFSpeechRecognizerDelegate {
     
@@ -18,6 +19,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet var camerabutton: UIButton!
     @IBOutlet var transcribebutton: UIButton!
     @IBOutlet var deletebutton: UIButton!
+    @IBOutlet var downloadbutton: UIButton!
     @IBOutlet var imageviewer: UIImageView!
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
@@ -41,6 +43,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         descriptionfield.delegate = self
         camerabutton.isEnabled = true
         deletebutton.isEnabled = false
+        downloadbutton.isEnabled = false
         transcribebutton.isEnabled = true
         navigationItem.title =  "Add Note"
         speechRecognizer.delegate = self
@@ -51,7 +54,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
             descriptionfield.text = selectedNote?.desc
             imageviewer.image = UIImage(data: selectedNote?.imageData ?? Data())
             deletebutton.isEnabled = true
-            
+            downloadbutton.isEnabled = true
         }
         
         // Add tap gesture recognizer to imageviewer
@@ -59,6 +62,47 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
                 imageviewer.addGestureRecognizer(tapGesture)
                 imageviewer.isUserInteractionEnabled = true
     }
+    
+    @IBAction func downloadPdf() {
+        
+        guard let title = selectedNote?.title, let desc = selectedNote?.desc, let imageData = selectedNote?.imageData else {
+            print("Error: Missing note data")
+            return
+        }
+
+        // Create a PDF document
+        let pdfDocument = PDFDocument()
+        let page = PDFPage()
+
+        // Add title text
+        let titleText = PDFAnnotation(bounds: CGRect(x: 50, y: 700, width: 500, height: 50), forType: .freeText, withProperties: nil)
+        titleText.contents = title
+        page.addAnnotation(titleText)
+
+        // Add description text
+        let descText = PDFAnnotation(bounds: CGRect(x: 50, y: 650, width: 500, height: 50), forType: .freeText, withProperties: nil)
+        descText.contents = desc
+        page.addAnnotation(descText)
+
+        // Add image to the PDF page
+        if let image = UIImage(data: imageData) {
+            let imageSize = CGSize(width: 300, height: 200)
+            let imageRect = CGRect(x: 50, y: 500, width: imageSize.width, height: imageSize.height)
+            image.draw(in: imageRect)
+        }
+
+        pdfDocument.insert(page, at: 0)
+
+        // Save the PDF to a temporary file
+        let tempPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("note.pdf")
+        pdfDocument.write(to: tempPath)
+
+        // Share the PDF file
+        let activityViewController = UIActivityViewController(activityItems: [tempPath], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        present(activityViewController, animated: true, completion: nil)
+    }
+
     
     @objc func imageViewerTapped() {
         // Check if there's an image in imageviewer
