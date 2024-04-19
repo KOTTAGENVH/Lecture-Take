@@ -7,6 +7,7 @@
 
 import UIKit
 
+//Table Cell for the lecture take note
 class NoteTableCelll: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!

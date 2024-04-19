@@ -8,35 +8,38 @@
 import UIKit
 import SafariServices
 
+//Use of codable for encoding and decoding the json
 struct NewsItem: Codable {
     let title: String
     let source: String
 }
 
+//Class for the news table
 class NewsTableViewController: UITableViewController {
     
-    var newsItems: [NewsItem] = []
-    var filteredNewsItems: [NewsItem] = []
-    var isLoading = false
+    var newsItems: [NewsItem] = [] //Array for retrived news item from api
+    var filteredNewsItems: [NewsItem] = [] //Filtered data via search
+    var isLoading = false //bool for loader
     
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchBar: UISearchBar! //Searchbar reference
+    
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     let noDataLabel = UILabel()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() //fetching data from rapid api 
         
         setupUI()
-        fetchData(from: "https://latest-sri-lankan-news.p.rapidapi.com/latest-news/deshaya/1")
-        fetchData(from: "https://latest-sri-lankan-news.p.rapidapi.com/latest-news/bbcsinhala")
+        fetchData(from: "https://latest-sri-lankan-news.p.rapidapi.com/latest-news/deshaya/1") //fetching data from rapid api
+        fetchData(from: "https://latest-sri-lankan-news.p.rapidapi.com/latest-news/bbcsinhala") //fetching data from rapid api
         
-        filteredNewsItems = newsItems
+        filteredNewsItems = newsItems //loading all news data to the filtered array
     }
     
+    //Func to setupui
     func setupUI() {
         tableView.backgroundView = activityIndicator
-        
-        noDataLabel.text = "No latest news available"
+        noDataLabel.text = "No latest news available" //Display if no data available
         noDataLabel.textAlignment = .center
         noDataLabel.isHidden = true
         tableView.addSubview(noDataLabel)
@@ -62,6 +65,7 @@ class NewsTableViewController: UITableViewController {
         noDataLabel.isHidden = true
     }
     
+    //Fetch data func
     func fetchData(from url: String) {
         isLoading = true
         showLoadingIndicator()
@@ -120,6 +124,7 @@ class NewsTableViewController: UITableViewController {
         }.resume()
     }
     
+    //Func for an error
     func alert(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -180,6 +185,7 @@ extension NewsTableViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
+    //news filtering func
     func filterNews(_ searchText: String) {
         if searchText.isEmpty {
             filteredNewsItems = newsItems

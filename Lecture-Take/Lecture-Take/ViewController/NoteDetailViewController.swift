@@ -10,6 +10,7 @@ import CoreData
 import Speech
 import PDFKit
 
+//Class to view single note, edit and delete
 class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SFSpeechRecognizerDelegate {
     
     @IBOutlet var titlelabel: UILabel!
@@ -45,7 +46,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         deletebutton.isEnabled = false
         downloadbutton.isEnabled = false
         transcribebutton.isEnabled = true
-        navigationItem.title =  "Add Note"
+        navigationItem.title =  "Note"
         speechRecognizer.delegate = self
         
         if(selectedNote != nil)
@@ -103,7 +104,83 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         present(activityViewController, animated: true, completion: nil)
     }
 
+    // Function to start or stop voice recording
+    @IBAction func transcribeButtonClicked(_ sender: UIButton) {
+        if audioEngine.isRunning {
+            stopRecording()
+        } else {
+            startRecording()
+        }
+        toggleDescriptionFieldInteraction()
+    }
     
+    //Button Action for save button
+    @IBAction func saveAction(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        // Check if titleField.text is nil
+        if titlefield.text == nil || titlefield.text?.isEmpty == true {
+            // Create and configure the alert controller
+            let alertController = UIAlertController(title: "Error", message: "Title cannot be empty", preferredStyle: .alert)
+            
+            // Add an action to the alert (e.g., OK button)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            // Present the alert
+            present(alertController, animated: true, completion: nil)
+            
+            
+        } else {
+            
+            if selectedNote == nil {
+                
+                let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
+                let newNote = Note(entity: entity!, insertInto: context)
+                newNote.id = noteList.count as NSNumber
+                newNote.title = titlefield.text
+                newNote.desc = descriptionfield.text
+                newNote.imageData = uploadedimage
+                newNote.date = Date()
+                
+                
+                do {
+                    try context.save()
+                    noteList.append(newNote)
+                    navigationController?.popViewController(animated: true)
+                } catch {
+                    print("Context save error: \(error)")
+                }
+            } else {
+                
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+                do {
+                    let results = try context.fetch(request) as! [Note]
+                    for note in results {
+                        if note == selectedNote {
+                            note.title = titlefield.text
+                            note.desc = descriptionfield.text
+                            note.imageData = uploadedimage
+                            try context.save()
+                            navigationController?.popViewController(animated: true)
+                        }
+                    }
+                } catch {
+                    print("Fetch failed: \(error)")
+                }
+            }
+        }
+    }
+    
+    //Button action for camera button
+    @IBAction func cameraButtonClicked(_ sender: UIButton) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController?.delegate = self
+        imagePickerController?.sourceType = .photoLibrary
+        present(imagePickerController!, animated: true, completion: nil)
+    }
+    
+    //function to enlarge image view on tap
     @objc func imageViewerTapped() {
         // Check if there's an image in imageviewer
         if let image = imageviewer.image {
@@ -134,22 +211,14 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
 
-    // Function to start or stop voice recording
-    @IBAction func transcribeButtonClicked(_ sender: UIButton) {
-        if audioEngine.isRunning {
-            stopRecording()
-        } else {
-            startRecording()
-        }
-        toggleDescriptionFieldInteraction()
-    }
+   
     
-    
+    //Function to disable description during transcribe
     private func toggleDescriptionFieldInteraction() {
         descriptionfield.isEditable = !audioEngine.isRunning
     }
     
-    // Start recording audio
+    // Start recording audio for transcribe
     private func startRecording() {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
@@ -207,7 +276,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
     
-    // Stop recording audio
+    // Stop recording audio on transcribe
     private func stopRecording() {
         audioEngine.stop()
         recognitionRequest?.endAudio()
@@ -221,56 +290,8 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         transcribebutton.setTitle("Transcribe", for: .normal)
     }
     
-    
-    @IBAction func saveAction(_ sender: Any) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        
-        if selectedNote == nil {
-            
-            let entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
-            let newNote = Note(entity: entity!, insertInto: context)
-            newNote.id = noteList.count as NSNumber
-            newNote.title = titlefield.text
-            newNote.desc = descriptionfield.text
-            newNote.imageData = uploadedimage
-            newNote.date = Date()
-            
-            
-            do {
-                try context.save()
-                noteList.append(newNote)
-                navigationController?.popViewController(animated: true)
-            } catch {
-                print("Context save error: \(error)")
-            }
-        } else {
-            
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-            do {
-                let results = try context.fetch(request) as! [Note]
-                for note in results {
-                    if note == selectedNote {
-                        note.title = titlefield.text
-                        note.desc = descriptionfield.text
-                        note.imageData = uploadedimage
-                        try context.save()
-                        navigationController?.popViewController(animated: true)
-                    }
-                }
-            } catch {
-                print("Fetch failed: \(error)")
-            }
-        }
-    }
-    
-    @IBAction func cameraButtonClicked(_ sender: UIButton) {
-        imagePickerController = UIImagePickerController()
-        imagePickerController?.delegate = self
-        imagePickerController?.sourceType = .photoLibrary
-        present(imagePickerController!, animated: true, completion: nil)
-    }
-    
+
+    //Upload image from photos
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
             if let imageData = pickedImage.jpegData(compressionQuality: 1.0) {
@@ -283,7 +304,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     
     
-    //To update the deletedate and leave the core data in core data
+    //To update the delete date and leave the core data in core data
     @IBAction func DeleteNote(_ sender: Any)
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -309,7 +330,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
 }
-    //To delete the note entirely from core data
+    //To delete the note entirely from core data(This function is optional)
     
 //    @IBAction func DeleteNote(_ sender: Any) {
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate

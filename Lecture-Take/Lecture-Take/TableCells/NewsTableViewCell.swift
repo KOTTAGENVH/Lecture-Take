@@ -7,8 +7,8 @@
 
 import UIKit
 
+//Table for LK news
 class NewsTableViewCell: UITableViewCell {
-
     @IBOutlet weak var newstitle: UILabel!
     @IBOutlet weak var sourcenews: UILabel!
 
