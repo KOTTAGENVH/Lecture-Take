@@ -26,7 +26,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private var recognitionTask: SFSpeechRecognitionTask?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private let audioEngine = AVAudioEngine()
+     let audioEngine = AVAudioEngine()
     private var titleText: String = ""
     private var transcribedText: String = ""
     private var selectedImage: UIImage?
@@ -95,7 +95,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
         pdfDocument.insert(page, at: 0)
 
         // Save the PDF to a temporary file
-        let tempPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("note.pdf")
+        let tempPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("\(title).pdf")
         pdfDocument.write(to: tempPath)
 
         // Share the PDF file
@@ -219,7 +219,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     // Start recording audio for transcribe
-    private func startRecording() {
+     func startRecording() {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         // Check if recognitionRequest is not nil
@@ -277,7 +277,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     // Stop recording audio on transcribe
-    private func stopRecording() {
+     func stopRecording() {
         audioEngine.stop()
         recognitionRequest?.endAudio()
         recognitionTask?.cancel()

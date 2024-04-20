@@ -54,7 +54,7 @@ class NoteTableView: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        navigationItem.title =  "Lecture-Take"
+        navigationItem.title =  "Home"
         loadData()
     }
 
