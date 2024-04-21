@@ -28,12 +28,13 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
      let audioEngine = AVAudioEngine()
     private var titleText: String = ""
-    private var transcribedText: String = ""
     private var selectedImage: UIImage?
     private var imagePickerController: UIImagePickerController?
     
     var uploadedimage: Data?
     var selectedNote: Note? = nil
+    var trascritpion = ""
+    var userdescriptiontext = ""
     
     override func viewDidLoad()
     {
@@ -220,6 +221,8 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     // Start recording audio for transcribe
      func startRecording() {
+         
+         userdescriptiontext = self.descriptionfield.text
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         // Check if recognitionRequest is not nil
@@ -237,13 +240,14 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
             recognitionRequest.shouldReportPartialResults = true
             
             // Start recognition task
-            recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [self] result, error in
                 var isFinal = false
                 
                 if let result = result {
                     // Update transcribedText only if there's valid transcribed text
                     if !result.bestTranscription.formattedString.isEmpty {
-                        self.descriptionfield.text += result.bestTranscription.formattedString
+                        self.trascritpion = result.bestTranscription.formattedString
+                        self.descriptionfield.text = self.userdescriptiontext + self.trascritpion
                     }
                     isFinal = result.isFinal
                 }
@@ -335,10 +339,10 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
 //    @IBAction func DeleteNote(_ sender: Any) {
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        let context = appDelegate.persistentContainer.viewContext
-//        
+//
 //        if let noteToDelete = selectedNote {
 //            context.delete(noteToDelete)
-//            
+//
 //            do {
 //                try context.save()
 //                navigationController?.popViewController(animated: true)
@@ -348,7 +352,7 @@ class NoteDetailViewController: UIViewController, UITextFieldDelegate, UITextVie
 //        }
 //    }
 //
-//    
+//
 //}
 
 
