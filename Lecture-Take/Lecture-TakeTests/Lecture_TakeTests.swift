@@ -7,30 +7,64 @@
 
 import XCTest
 @testable import Lecture_Take
+import CoreData
 
-final class Lecture_TakeTests: XCTestCase {
-
+class Lecture_TakeTests: XCTestCase {
+    
+    var viewController: NoteDetailViewController!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        viewController = storyboard.instantiateViewController(withIdentifier: "addTask") as? NoteDetailViewController
+        viewController.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewController = nil
     }
+    
+  
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+      func testSaveActionWithEmptyTitle() throws {
+          // Given
+          viewController.titlefield.text = ""
 
+          // When
+          viewController.saveAction(UIButton())
+
+          // Then
+          XCTAssertNil(viewController.selectedNote, "Selected note should be nil when title is empty")
+      }
+
+    
+    func testStartRecording() throws {
+           // Ensure audio engine is not running initially
+           XCTAssertFalse(viewController.audioEngine.isRunning)
+           
+           // Call startRecording
+           viewController.startRecording()
+           
+           // Audio engine should be running after calling startRecording
+           XCTAssertTrue(viewController.audioEngine.isRunning)
+       }
+       
+       func testStopRecording() throws {
+           // Call startRecording to ensure audio engine is running
+           viewController.startRecording()
+           
+           // Audio engine should be running before calling stopRecording
+           XCTAssertTrue(viewController.audioEngine.isRunning)
+           
+           // Call stopRecording
+           viewController.stopRecording()
+           
+           // Audio engine should not be running after calling stopRecording
+           XCTAssertFalse(viewController.audioEngine.isRunning)
+       }
+
+    
 }
+
+
+
