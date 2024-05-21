@@ -74,7 +74,7 @@ class NewsTableViewController: UITableViewController {
         
         var request = URLRequest(url: apiUrl)
         request.httpMethod = "GET"
-        request.setValue("ca26c6109cmsh798adf6e911e6c8p14fff8jsn64ab23c74ed9", forHTTPHeaderField: "X-RapidAPI-Key")
+        request.setValue("", forHTTPHeaderField: "X-RapidAPI-Key") //Add your key here
         request.setValue("latest-sri-lankan-news.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
